@@ -8,7 +8,27 @@ public class Filosofo implements Runnable{
         this.garfo2 = garfo2;
     }
 
+    public void comer(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void pensar(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void run(){
 
     }
+
+
 }
