@@ -12,7 +12,7 @@ public class Filosofo implements Runnable{
 
     public void comer(){
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -21,7 +21,7 @@ public class Filosofo implements Runnable{
 
     public void pensar(){
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

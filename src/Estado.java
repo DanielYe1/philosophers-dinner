@@ -1,8 +1,12 @@
+import java.time.LocalDateTime;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Estado {
+
+    LocalDateTime data = LocalDateTime.now();
+
     private Lock mutex = new ReentrantLock();
     Condition[] cond = new Condition[5];
     String[] estado = new String[5];
@@ -26,10 +30,10 @@ public class Estado {
             garfo1.setLivre(false);
             garfo2.setLivre(false);
             estado[id] = "comendo";
-            printaEstado(id);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
+            printaEstado(id);
             mutex.unlock();
         }
     }
@@ -45,10 +49,11 @@ public class Estado {
     }
 
     private void printaEstado(int id) {
+        long seconds = LocalDateTime.now().getSecond() - data.getSecond();
+        System.out.println("segundo:" + seconds);
         for (int i = 0; i < 5; i++) {
-            System.out.printf(estado[i] + " ");
+            System.out.printf("Filosofo %d %s\n", i, estado[i]);
         }
-        System.out.println("(" + (id + 1) + ")");
     }
 
 }
