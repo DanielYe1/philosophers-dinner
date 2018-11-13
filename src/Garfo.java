@@ -1,8 +1,11 @@
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Garfo {
     private boolean livre;
 
-    public Garfo(boolean livre) {
-        this.livre = livre;
+    public Garfo() {
+        this.livre = true;
     }
 
     public boolean isLivre() {
