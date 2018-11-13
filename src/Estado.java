@@ -19,13 +19,14 @@ public class Estado {
     public void pegaGarfos(int id, Garfo garfo1, Garfo garfo2) {
         mutex.lock();
         try {
-            estado[id] = "com fome";
+            estado[id] = "com-fome";
             while (!garfo1.isLivre() || !garfo2.isLivre()) {
                 cond[id].await();
             }
             garfo1.setLivre(false);
             garfo2.setLivre(false);
             estado[id] = "comendo";
+            printaEstado(id);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -43,12 +44,11 @@ public class Estado {
         mutex.unlock();
     }
 
-    void printaEstado(int id) {
-        StringBuffer line = new StringBuffer();
-        for (int i = 0; i < 5; i++){
-            line.append(estado[i] + " ");
+    private void printaEstado(int id) {
+        for (int i = 0; i < 5; i++) {
+            System.out.printf(estado[i] + " ");
         }
-        System.out.println(line + "(" + (id + 1) + ")");
+        System.out.println("(" + (id + 1) + ")");
     }
 
 }
