@@ -1,11 +1,11 @@
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Estado {
 
-    LocalDateTime data = LocalDateTime.now();
+    Date data = new Date();
 
     private Lock mutex = new ReentrantLock();
     Condition[] cond = new Condition[5];
@@ -24,7 +24,7 @@ public class Estado {
     public void pegaGarfos(int id, Garfo garfo1, Garfo garfo2) {
         mutex.lock();
         try {
-            estado[id] = "com-fome";
+            estado[id] = "com fome";
             while (!garfo1.isLivre() || !garfo2.isLivre()) {
                 cond[id].await();
             }
@@ -53,8 +53,8 @@ public class Estado {
     }
 
     private void printaEstado(int id) {
-        long seconds = LocalDateTime.now().getSecond() - data.getSecond();
-        System.out.println("segundo:" + seconds);
+        long seconds = (new Date().getTime() - data.getTime())/1000;
+        System.out.println("segundo: " + seconds);
         for (int i = 0; i < 5; i++) {
             System.out.printf("Filosofo %d %s\n", i, estado[i]);
         }
