@@ -1,6 +1,13 @@
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("Jantar do filósofos");
+        System.out.println("Alunos:");
+        System.out.println("Daniel Ye");
+        System.out.println("Matheus Erthal");
+        System.out.println("Matheus Morgado");
+        System.out.println("Roberto Lourenço");
+        System.out.println("-------------------------------");
         Garfo[] garfos = new Garfo[5];
         Filosofo[] filosofos = new Filosofo[5];
         Estado estado = new Estado();
