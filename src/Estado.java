@@ -11,6 +11,7 @@ public class Estado {
     Condition[] cond = new Condition[5];
     String[] estado = new String[5];
     int[] id = new int[5];
+    boolean teste = false;
 
     public Estado() {
         for (int i = 0; i < 5; i++) {
@@ -33,7 +34,10 @@ public class Estado {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            printaEstado(id);
+            if(teste){
+                printaEstado(id);
+            }
+            teste = !teste;
             mutex.unlock();
         }
     }
